@@ -71,7 +71,7 @@ function checkBalance() {
 
 //#endregion
 
-//#region Simple To Do List
+//#region "Simple" To Do List
 
 // VARIABLES
 let task_arr = [
@@ -92,28 +92,28 @@ removeTask("Finish Homework"); // Remove an existing task
 // ADD TASK AND DISPLAY TO-DO LIST
 function addTask(task) {
   // Check if the task is a non-empty string
-    if (task && typeof task === "string" && task !== "") {
-        let isTaskOnList = false;
+  if (task && typeof task === "string" && task !== "") {
+    let isTaskOnList = false;
 
-        // Check for repeated tasks
-        for (let i = 0; i < task_arr.length; i++) {
-            if (task_arr[i] === task) {
-                isTaskOnList = true;
-                break;
-            } //END IF STATEMENT
-        } //END FOR LOOP
+    // Check for repeated tasks
+    for (let i = 0; i < task_arr.length; i++) {
+      if (task_arr[i] === task) {
+        isTaskOnList = true;
+        break;
+      } //END IF STATEMENT
+    } //END FOR LOOP
 
-        // Add the task if new
-        if (!isTaskOnList) {
-        task_arr.push(task);
-        console.log("Task added to your list!");
-        } else {
-        console.log("ERROR: Task already exists.");
-        } //END IF ELSE STATEMENT THAT ADDS NEW TASK
+    // Add the task if new
+    if (!isTaskOnList) {
+      task_arr.push(task); //add new task
+      console.log("Task added to your list!");
     } else {
-        console.log("ERROR: Invalid task.");
-    } // END IF-ELSE STATEMENT THAT CHECKS STRINGS
-    displayTasks();
+      console.log("ERROR: Task already exists.");
+    } //END IF ELSE STATEMENT THAT ADDS NEW TASK
+  } else {
+    console.log("ERROR: Invalid task.");
+  } // END IF-ELSE STATEMENT THAT CHECKS STRINGS
+  displayTasks();
 } // END OF addTask FUNCTION
 
 // REMOVE TASK AND DISPLAY TO-DO LIST
@@ -148,5 +148,107 @@ function displayTasks() {
     console.log(`${i + 1}. ${task_arr[i]}`);
   } //END FOR LOOP
 } //END DISPLAY TASK FUNCTION
+
+//#endregion
+
+//#region Temp Cheker
+
+let temperature = 90;
+let tempUnitChosen = "F"; //Chosen temp Unit
+
+// CONVERT TEMP TO KELVIN
+function convertToKelvin(temp, unit) {
+  let kelvin;
+  if (unit === "C") {
+    kelvin = temp + 273.15;
+  } else if (unit === "F") {
+    kelvin = ((temp - 32) * 5) / 9 + 273.15;
+  } else if (unit === "K") {
+    kelvin = temp;
+  } else {
+    console.log("Invalid temp unit");
+    return null;
+  } //END IF-ELSE STATEMENT 
+  return kelvin;
+} // END OF convertToKelvin FUNCTION
+
+// CONVERT TO CELSIOUS
+function convertToCelsius(temp, unit) {
+  let celsius;
+  if (unit === "F") {
+    celsius = ((temp - 32) * 5) / 9;
+  } else if (unit === "K") {
+    celsius = temp - 273.15;
+  } else if (unit === "C") {
+    celsius = temp;
+  } else {
+    console.log("Invalid temp unit");
+    return null;
+  } //END IF-ELSE STATEMENT
+  return celsius;
+} // END OF convertToCelsius FUNCTION
+
+// CONVER TEMP TO FAR
+function convertToFahrenheit(temp, unit) {
+  let fahrenheit;
+  if (unit === "C") {
+    fahrenheit = (temp * 9) / 5 + 32;
+  } else if (unit === "K") {
+    fahrenheit = ((temp - 273.15) * 9) / 5 + 32;
+  } else if (unit === "F") {
+    fahrenheit = temp;
+  } else {
+    console.log("Invalid temp unit");
+    return null;
+  } //END IF-ELSE STATEMENT
+  return fahrenheit;
+} // END OF convertToFahrenheit FUNCTION
+
+// DISPLAY CONVERTED TEMPS BY UNIT CHOSEN
+function displayConvertedTemps(temp, unit) {
+  let kelvin, celsius, fahrenheit;
+
+  switch (unit) {
+    case "C":
+      celsius = temp;
+      fahrenheit = convertToFahrenheit(temp, unit);
+      kelvin = convertToKelvin(temp, unit);
+      break;
+    case "F":
+      fahrenheit = temp;
+      celsius = convertToCelsius(temp, unit);
+      kelvin = convertToKelvin(temp, unit);
+      
+      break;
+    case "K":
+      kelvin = temp;
+      celsius = convertToCelsius(temp, unit);
+      fahrenheit = convertToFahrenheit(temp, unit);
+      break;
+    default:
+      console.log("Invalid unit");
+      return;
+  } //END SWITCH STATEMENT
+
+  console.log(`Original Temperature: ${temp}°${unit}`);
+  console.log(`In Kelvin: ${kelvin.toFixed(2)} K`);
+  console.log(`In Celsius: ${celsius.toFixed(2)} °C`);
+  console.log(`In Fahrenheit: ${fahrenheit.toFixed(2)} °F`);
+} // END DISPLAY FUNCTION
+
+//DISPLAY TO CONSOLE
+displayConvertedTemps(temperature, tempUnitChosen);
+
+//* KelvinToCelsius conversion:
+//* kelvinNum - 273.15
+
+//* celsiusToKelvin:
+//* celsiusNum + 273.15
+
+//* fahrenheitToCelsius:
+//* (fahrenheit - 32) * 5/9
+
+//* celsiusToFahrenheit:
+//* (celsius * 9/5) + 32
 
 //#endregion
