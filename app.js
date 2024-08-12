@@ -120,10 +120,10 @@ function addTask(task) {
 function removeTask(task) {
   let isTaskRemoved = false;
 
-  // remove task if found on list
+  //REMOVE TASK ON LIST
   for (let i = 0; i < task_arr.length; i++) {
     if (task_arr[i] === task) {
-      task_arr.splice(i, 1); //.splice removed if string is already in the list
+      task_arr.splice(i, 1); //.splice remove if string is already in the list
       isTaskRemoved = true;
       break;
     } //END IF STATEMENT
