@@ -145,7 +145,7 @@ function removeTask(task) {
 function displayTasks() {
   console.log("To-Do List:");
   for (let i = 0; i < task_arr.length; i++) {
-    console.log(`${i + 1}. ${task_arr[i]}`);
+    console.log(`${i + 1}. ${task_arr[i]}`); //numerates each task
   } //END FOR LOOP
 } //END DISPLAY TASK FUNCTION
 
@@ -168,7 +168,7 @@ function convertToKelvin(temp, unit) {
   } else {
     console.log("Invalid temp unit");
     return null;
-  } //END IF-ELSE STATEMENT 
+  } //END IF-ELSE STATEMENT
   return kelvin;
 } // END OF convertToKelvin FUNCTION
 
@@ -218,7 +218,7 @@ function displayConvertedTemps(temp, unit) {
       fahrenheit = temp;
       celsius = convertToCelsius(temp, unit);
       kelvin = convertToKelvin(temp, unit);
-      
+
       break;
     case "K":
       kelvin = temp;
