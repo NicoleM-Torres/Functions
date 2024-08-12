@@ -83,7 +83,7 @@ let task_arr = [
 ];
 
 // DISPLAY TO CONSOLE
-console.log("Initial To-Do List:");
+console.log("Original To-Do List:");
 displayTasks();
 
 addTask("Go grocery shopping"); // Add a task
