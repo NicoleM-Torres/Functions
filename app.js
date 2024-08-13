@@ -250,17 +250,18 @@ function displayConvertedTemps(temp, unit) {
 // DISPLAY TO CONSOLE
 displayConvertedTemps(temperature, tempUnitChosen);
 
-//* KelvinToCelsius conversion:
-//* kelvinNum - 273.15
+/* CONVERSION FORMULAS:
+KelvinToCelsius conversion:
+kelvinNum - 273.15
 
-//* celsiusToKelvin:
-//* celsiusNum + 273.15
+celsiusToKelvin:
+celsiusNum + 273.15
 
-//* fahrenheitToCelsius:
-//* (fahrenheit - 32) * 5/9
+fahrenheitToCelsius:
+(fahrenheit - 32) * 5/9
 
-//* celsiusToFahrenheit:
-//* (celsius * 9/5) + 32
+celsiusToFahrenheit:
+(celsius * 9/5) + 32 */
 
 //#endregion
 
