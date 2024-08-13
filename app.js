@@ -223,7 +223,6 @@ function displayConvertedTemps(temp, unit) {
       fahrenheit = temp;
       celsius = convertToCelsius(temp, unit);
       kelvin = convertToKelvin(temp, unit);
-
       break;
     case "K":
       kelvin = temp;
@@ -233,15 +232,22 @@ function displayConvertedTemps(temp, unit) {
     default:
       console.log("Invalid unit");
       return;
-  } //END SWITCH STATEMENT
+  }
 
   console.log(`Original Temperature: ${temp}°${unit}`);
-  console.log(`In Kelvin: ${kelvin.toFixed(2)} K`);
-  console.log(`In Celsius: ${celsius.toFixed(2)} °C`);
-  console.log(`In Fahrenheit: ${fahrenheit.toFixed(2)} °F`);
-} // END DISPLAY FUNCTION
 
-//DISPLAY TO CONSOLE
+  if (unit !== "K") {
+    console.log(`In Kelvin: ${kelvin.toFixed(2)} K`);
+  }
+  if (unit !== "C") {
+    console.log(`In Celsius: ${celsius.toFixed(2)} °C`);
+  }
+  if (unit !== "F") {
+    console.log(`In Fahrenheit: ${fahrenheit.toFixed(2)} °F`);
+  }
+}
+
+// DISPLAY TO CONSOLE
 displayConvertedTemps(temperature, tempUnitChosen);
 
 //* KelvinToCelsius conversion:
