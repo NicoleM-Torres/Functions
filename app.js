@@ -260,50 +260,122 @@ displayConvertedTemps(temperature, tempUnitChosen);
 
 //#region PlayList Manager
 
-//VARIABLES
-let myPlaylist_arr = [];
-//"Take Me Back to Eden - Sleep Token",
-  // "Savages - Marina",
-  // "Girl with One Eye - Florence + The Machine",
-  // "Nameless - Stevie Howie",
-  // "The Search - NF",
-//ADD SONG
+// VARIABLES
+let myPlaylist_arr = []; // Start with an empty playlist
+
+displayPlaylist();
+
+// addSong(1);
+addSong("The Search - NF");
+addSong("Nameless - Stevie Howie");
+addSong("Girl with One Eye - Florence + The Machine");
+addSong("Savages - Marina");
+addSong("Take Me Back to Eden - Sleep Token");
+// removeSong("Savages - Marina");
+
+// ADD SONG
 function addSong(song) {
-  if (song && typeof song === "string" && song.trim() !== "") {
+  // Check if the song is a non-empty string
+  if (typeof song === "string" && song.trim() !== "") {
     // Add the song to the playlist
     myPlaylist_arr.push(song);
-    console.log("Song added to your playlist!");
+    console.log("Song added!");
   } else {
     console.log("ERROR: Invalid song.");
   }
-  displayPlaylist();
-} //END addSong FUNCTION
+  displayPlaylist(); // Display the updated playlist
+} // END addSong FUNCTION
 
-//REMOVE SONG
+// REMOVE SONG
 function removeSong(song) {
+  /* Find the index of the song in the playlist
+  indexOf method is used to find the first occurrence
+   of a specified value (song parameter) in an array */
+  let i = myPlaylist_arr.indexOf(song);
 
-} //END OF removeSong FUCNTION
+  /*This condition checks if the index is not equal
+   to -1, which means the song was found in the playlist. 
+   checks if the string was found on the list*/
+  if (i !== -1) {
+    // Remove the song from the playlist
+    myPlaylist_arr.splice(i, 1);
+    console.log(`Song ${myPlaylist_arr[i]} removed from playlist.`);
+  } else {
+    console.log("ERROR: Song not on list.");
+  }
+  displayPlaylist(); // Display the updated playlist
+} // END OF removeSong FUNCTION
 
-//DISPLAY PLAYLIST
-
-function displayPlaylist(song) {
-
-} //END OF displayPlaylist FUNCTION
+// DISPLAY PLAYLIST
+function displayPlaylist() {
+  // Check if the playlist is empty
+  if (myPlaylist_arr.length === 0) {
+    console.log("Your playlist is empty.");
+  } else {
+    console.log("Your Playlist:");
+    // Loop through the playlist and display each song
+    myPlaylist_arr.forEach((song, i) => {
+      console.log(`${i + 1}. ${song}`);
+    });
+  }
+} // END OF displayPlaylist FUNCTION
 
 //#endregion
 
 //#region Daily Temperatures
-
-//VARIABLES
+// VARIABLES
 let temperature_arr = [72, 75, 79, 83, 78, 85, 90];
 
-//CALCULATE THE AVG TEMP
-function calculateAverageTemp() {} //END calculateAverageTemp FUNCTION
+// CALCULATE THE AVG TEMP
+function calculateAverageTemp() {
+  let sum = 0;
 
-//FIND THE HIGHEST TEMP
-function calculateHighestTemp() {} //END calculateHighestTemp FUNCTION
+  for (let i = 0; i < temperature_arr.length; i++) {
+    sum += temperature_arr[i];
+  }
 
-//FIND THE LOWEST TEMP
-function calculateLowestTemp() {} //END calculateLowestTemp FUNCTION
+  return sum / temperature_arr.length; // Return the average temperature
+} // END calculateAverageTemp FUNCTION
+
+// FIND THE HIGHEST TEMP
+function calculateHighestTemp() {
+  let highest = temperature_arr[0];
+
+  for (let i = 1; i < temperature_arr.length; i++) {
+    if (temperature_arr[i] > highest) {
+      highest = temperature_arr[i];
+    }
+  }
+
+  return highest; // Return the highest temperature
+} // END calculateHighestTemp FUNCTION
+
+// FIND THE LOWEST TEMP
+function calculateLowestTemp() {
+  let lowest = temperature_arr[0];
+
+  for (let i = 1; i < temperature_arr.length; i++) {
+    if (temperature_arr[i] < lowest) {
+      lowest = temperature_arr[i];
+    }
+  }
+
+  return lowest; // Return the lowest temperature
+} // END calculateLowestTemp FUNCTION
+
+// DISPLAY ALL STATISTICS
+function displayAllStats() {
+  let average = calculateAverageTemp();
+  let highest = calculateHighestTemp();
+  let lowest = calculateLowestTemp();
+
+  console.log("Temperature Statistics:");
+  console.log(`Average Temperature: ${average.toFixed(2)}`); // Display average with 2 decimal places
+  console.log(`Highest Temperature: ${highest}`);
+  console.log(`Lowest Temperature: ${lowest}`);
+} // END displayAllStats FUNCTION
+
+// CALL displayAllStats TO SHOW ALL STATISTICS
+displayAllStats();
 
 //#endregion
