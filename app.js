@@ -91,7 +91,9 @@ removeTask("Finish Homework"); // Remove an existing task
 
 // ADD TASK AND DISPLAY TO-DO LIST
 function addTask(task) {
-  // Check if the task is a non-empty string
+  /* Check if the task is a non-empty string,
+  typeof operator  -- is used to determine the 
+  type of a variable or value.*/
   if (task && typeof task === "string" && task !== "") {
     let isTaskOnList = false;
 
@@ -121,9 +123,12 @@ function removeTask(task) {
   let isTaskRemoved = false;
 
   //REMOVE TASK ON LIST
+  /*.splice remove if string is already in the list 
+  specifies the number of elements to remove starting 
+  from the index */
   for (let i = 0; i < task_arr.length; i++) {
     if (task_arr[i] === task) {
-      task_arr.splice(i, 1); //.splice remove if string is already in the list
+      task_arr.splice(i, 1);
       isTaskRemoved = true;
       break;
     } //END IF STATEMENT
@@ -250,5 +255,55 @@ displayConvertedTemps(temperature, tempUnitChosen);
 
 //* celsiusToFahrenheit:
 //* (celsius * 9/5) + 32
+
+//#endregion
+
+//#region PlayList Manager
+
+//VARIABLES
+let myPlaylist_arr = [];
+//"Take Me Back to Eden - Sleep Token",
+  // "Savages - Marina",
+  // "Girl with One Eye - Florence + The Machine",
+  // "Nameless - Stevie Howie",
+  // "The Search - NF",
+//ADD SONG
+function addSong(song) {
+  if (song && typeof song === "string" && song.trim() !== "") {
+    // Add the song to the playlist
+    myPlaylist_arr.push(song);
+    console.log("Song added to your playlist!");
+  } else {
+    console.log("ERROR: Invalid song.");
+  }
+  displayPlaylist();
+} //END addSong FUNCTION
+
+//REMOVE SONG
+function removeSong(song) {
+
+} //END OF removeSong FUCNTION
+
+//DISPLAY PLAYLIST
+
+function displayPlaylist(song) {
+
+} //END OF displayPlaylist FUNCTION
+
+//#endregion
+
+//#region Daily Temperatures
+
+//VARIABLES
+let temperature_arr = [72, 75, 79, 83, 78, 85, 90];
+
+//CALCULATE THE AVG TEMP
+function calculateAverageTemp() {} //END calculateAverageTemp FUNCTION
+
+//FIND THE HIGHEST TEMP
+function calculateHighestTemp() {} //END calculateHighestTemp FUNCTION
+
+//FIND THE LOWEST TEMP
+function calculateLowestTemp() {} //END calculateLowestTemp FUNCTION
 
 //#endregion
