@@ -34,8 +34,10 @@ console.log(`Letter Grade: ${grade}`);
 //#endregion
 
 //#region Bank Account Manager
+
 //VARIABLES
 let balance = 1000;
+checkBalance();
 depositMoney(790.98); // Deposit money into acct
 withdrawMoney(123.8); // Withdraw money from acct
 checkBalance(); // Balance in acct
@@ -52,14 +54,16 @@ function depositMoney(amount) {
 
 //WITHDRAW MONEY FROM ACCT
 function withdrawMoney(amount) {
+  //checks that the widthdraw amount is > 0 (to avoid negative #'s and 0)
   if (amount > 0) {
+    //checks if the account (balance) has sufficient money for a withdrawl
     if (amount <= balance) {
       balance -= amount;
       console.log(`Withdrew $${amount}. New balance: $${balance}`);
-    } else {
+    } else { //if not sufficient
       console.log("Insufficient funds.");
     }
-  } else {
+  } else { //if withdrawl money is <= 0
     console.log("Withdrawal amount must be greater than zero.");
   }
 } //END OF withdrawMOney FUNCTION
